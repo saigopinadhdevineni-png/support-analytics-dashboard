@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Support Analytics Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- PapaParse (CSV parsing) -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Support Analytics Dashboard</h1>
+    <p class="sub">Upload a CSV of support tickets → KPIs + filters + charts.</p>
+
+    <div class="card">
+      <label class="btn">
+        Upload CSV
+        <input type="file" id="csvFile" accept=".csv" hidden>
+      </label>
+      <span id="fileName" class="muted">No file chosen</span>
+    </div>
+
+    <div class="card grid">
+      <div>
+        <label>From Date</label>
+        <input type="date" id="fromDate">
+      </div>
+      <div>
+        <label>To Date</label>
+        <input type="date" id="toDate">
+      </div>
+      <div>
+        <label>Issue Type</label>
+        <select id="issueType">
+          <option value="all">All</option>
+        </select>
+      </div>
+      <div>
+        <label>Priority</label>
+        <select id="priority">
+          <option value="all">All</option>
+        </select>
+      </div>
+      <div class="span2">
+        <button id="applyFilters" class="btn2">Apply Filters</button>
+        <button id="resetFilters" class="btn3">Reset</button>
+      </div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi">
+        <div class="kpi-title">Ticket Volume</div>
+        <div class="kpi-value" id="kpiVolume">—</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-title">Avg Resolution Time (hrs)</div>
+        <div class="kpi-value" id="kpiAvgRes">—</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-title">SLA Breach %</div>
+        <div class="kpi-value" id="kpiSla">—</div>
+      </div>
+    </div>
+
+    <div class="charts">
+      <div class="chart-card">
+        <h3>Tickets by Issue Type</h3>
+        <canvas id="barChart"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Tickets per Day</h3>
+        <canvas id="lineChart"></canvas>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>CSV Format (Must match)</h3>
+      <pre>
+ticket_id,created_at,resolved_at,issue_type,priority,sla_hours
+1001,2025-12-01 09:10,2025-12-01 13:40,Payments,High,4
+1002,2025-12-01 10:00,2025-12-02 08:00,Listings,Medium,24
+      </pre>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

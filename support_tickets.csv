@@ -1,0 +1,6 @@
+ticket_id,created_at,resolved_at,issue_type,priority,sla_hours
+1001,2025-12-01 09:10,2025-12-01 13:40,Payments,High,4
+1002,2025-12-01 10:00,2025-12-02 08:00,Listings,Medium,24
+1003,2025-12-02 09:00,2025-12-02 12:00,Orders,Low,8
+1004,2025-12-02 11:30,2025-12-03 14:00,Payments,High,4
+1005,2025-12-03 08:00,2025-12-03 10:10,Listings,Medium,12
